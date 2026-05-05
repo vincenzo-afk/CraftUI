@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CraftUI – Interactive browser-based design playground for UI components with AI-powered code generation." />
+  <meta property="og:title" content="CraftUI – UI Component Playground" />
+  <meta property="og:description" content="Craft, customize, and export production-ready UI components with AI assistance." />
+  <meta property="og:type" content="website" />
+  <title>⚡ CraftUI – UI Component Playground</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Toast Container ── -->
+  <div id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+  <!-- ── Navbar ── -->
+  <header class="navbar" role="banner">
+    <div class="navbar-left">
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle sidebar" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="#" class="logo" aria-label="CraftUI Home">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">CraftUI</span>
+        <span class="logo-badge">Playground</span>
+      </a>
+    </div>
+    <div class="navbar-right">
+      <button class="btn-generate-all" id="generate-all-btn" aria-label="Generate all component code with AI">
+        <span class="btn-icon-emoji">🤖</span>
+        <span>Generate All with AI</span>
+      </button>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
+        <span id="theme-icon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── App Layout ── -->
+  <div class="app-layout">
+
+    <!-- ── Sidebar ── -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Component sections">
+      <nav class="sidebar-nav">
+        <a href="#buttons" class="sidebar-item active" data-section="buttons" aria-label="Buttons section">
+          <span class="sidebar-icon">🔘</span>
+          <span class="sidebar-label">Buttons</span>
+        </a>
+        <a href="#cards" class="sidebar-item" data-section="cards" aria-label="Cards section">
+          <span class="sidebar-icon">📦</span>
+          <span class="sidebar-label">Cards</span>
+        </a>
+        <a href="#modals" class="sidebar-item" data-section="modals" aria-label="Modals section">
+          <span class="sidebar-icon">🪟</span>
+          <span class="sidebar-label">Modals</span>
+        </a>
+        <a href="#loaders" class="sidebar-item" data-section="loaders" aria-label="Loaders section">
+          <span class="sidebar-icon">⏳</span>
+          <span class="sidebar-label">Loaders</span>
+        </a>
+        <a href="#shadows" class="sidebar-item" data-section="shadows" aria-label="Shadows section">
+          <span class="sidebar-icon">🌑</span>
+          <span class="sidebar-label">Shadows</span>
+        </a>
+        <a href="#gradients" class="sidebar-item" data-section="gradients" aria-label="Gradients section">
+          <span class="sidebar-icon">🌊</span>
+          <span class="sidebar-label">Gradients</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <span class="sidebar-version">v1.0.0</span>
+      </div>
+    </aside>
+
+    <!-- ── Main Content ── -->
+    <main class="main-content" id="main-content" role="main">
+
+      <!-- ════════════════════════════════
+           SECTION: Buttons
+      ════════════════════════════════ -->
+      <section id="buttons" class="component-section" aria-labelledby="buttons-heading">
+        <div class="section-header">
+          <h2 id="buttons-heading"><span class="section-icon">🔘</span> Buttons</h2>
+          <p class="section-desc">Craft interactive button components with multiple variants, sizes, and states.</p>
+        </div>
+
+        <div class="section-body">
+          <div class="panel-row">
+            <!-- Preview -->
+            <div class="preview-panel" id="buttons-preview" aria-label="Button preview area">
+              <div class="preview-label">Live Preview</div>
+              <div class="preview-content" id="buttons-preview-content"></div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls-panel" aria-label="Button controls">
+              <div class="controls-title">⚙️ Controls</div>
+
+              <div class="control-group">
+                <label for="btn-variant">Variant</label>
+                <select id="btn-variant" aria-label="Button variant">
+                  <option value="primary">Primary</option>
+                  <option value="secondary">Secondary</option>
+                  <option value="ghost">Ghost</option>
+                  <option value="danger">Danger</option>
+                  <option value="neon">Neon Glow</option>
+                  <option value="neumorphic">Neumorphic</option>
+                  <option value="3d">3D Press</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="btn-size">Size</label>
+                <select id="btn-size" aria-label="Button size">
+                  <option value="sm">Small</option>
+                  <option value="md" selected>Medium</option>
+                  <option value="lg">Large</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="btn-radius">Border Radius <span class="control-value" id="btn-radius-val">8px</span></label>
+                <input type="range" id="btn-radius" min="0" max="24" value="8" aria-label="Button border radius" />
+              </div>
+
+              <div class="control-group">
+                <label for="btn-color">Primary Color</label>
+                <input type="color" id="btn-color" value="#6366f1" aria-label="Button primary color" />
+              </div>
+
+              <div class="control-group">
+                <label for="btn-text">Button Text</label>
+                <input type="text" id="btn-text" value="Click Me" placeholder="Button label" aria-label="Button text" />
+              </div>
+
+              <div class="control-group control-toggle-row">
+                <label for="btn-loading">Loading State</label>
+                <label class="toggle-switch" aria-label="Toggle loading state">
+                  <input type="checkbox" id="btn-loading" role="switch" />
+                  <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                </label>
+              </div>
+
+              <div class="control-group control-toggle-row">
+                <label for="btn-icon">Show Icon</label>
+                <label class="toggle-switch" aria-label="Toggle icon">
+                  <input type="checkbox" id="btn-icon" role="switch" checked />
+                  <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Code Output -->
+          <div class="code-section">
+            <div class="code-header">
+              <span class="code-lang-badge">HTML + CSS</span>
+              <div class="code-actions">
+                <button class="btn-copy" data-target="buttons-code" aria-label="Copy button code">📋 Copy</button>
+                <button class="btn-export" data-component="buttons" aria-label="Export button code">💾 Export</button>
+                <button class="btn-ai-generate" data-component="buttons" aria-label="Generate button code with AI">🤖 AI Generate</button>
+              </div>
+            </div>
+            <pre class="code-output" id="buttons-code" aria-label="Generated button code"><code></code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════
+           SECTION: Cards
+      ════════════════════════════════ -->
+      <section id="cards" class="component-section" aria-labelledby="cards-heading">
+        <div class="section-header">
+          <h2 id="cards-heading"><span class="section-icon">📦</span> Cards</h2>
+          <p class="section-desc">Design versatile card components from basic to glassmorphic styles.</p>
+        </div>
+
+        <div class="section-body">
+          <div class="panel-row">
+            <div class="preview-panel" id="cards-preview" aria-label="Card preview area">
+              <div class="preview-label">Live Preview</div>
+              <div class="preview-content" id="cards-preview-content"></div>
+            </div>
+
+            <div class="controls-panel" aria-label="Card controls">
+              <div class="controls-title">⚙️ Controls</div>
+
+              <div class="control-group">
+                <label for="card-variant">Variant</label>
+                <select id="card-variant" aria-label="Card variant">
+                  <option value="basic">Basic</option>
+                  <option value="glass">Glassmorphism</option>
+                  <option value="gradient">Gradient Border</option>
+                  <option value="hover">Hover Lift</option>
+                  <option value="dark">Dark Card</option>
+                  <option value="image">Image Card</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="card-radius">Border Radius <span class="control-value" id="card-radius-val">16px</span></label>
+                <input type="range" id="card-radius" min="0" max="24" value="16" aria-label="Card border radius" />
+              </div>
+
+              <div class="control-group">
+                <label for="card-shadow">Shadow Intensity <span class="control-value" id="card-shadow-val">3</span></label>
+                <input type="range" id="card-shadow" min="0" max="5" value="3" aria-label="Card shadow intensity" />
+              </div>
+
+              <div class="control-group">
+                <label for="card-width">Card Width <span class="control-value" id="card-width-val">320px</span></label>
+                <input type="range" id="card-width" min="200" max="500" value="320" aria-label="Card width" />
+              </div>
+
+              <div class="control-group">
+                <label for="card-title">Title</label>
+                <input type="text" id="card-title" value="Design System" placeholder="Card title" aria-label="Card title" />
+              </div>
+
+              <div class="control-group">
+                <label for="card-body">Body Text</label>
+                <input type="text" id="card-body" value="A modern card component with smooth transitions." placeholder="Card body" aria-label="Card body text" />
+              </div>
+
+              <div class="control-group control-toggle-row">
+                <label for="card-badge">Show Badge</label>
+                <label class="toggle-switch" aria-label="Toggle badge">
+                  <input type="checkbox" id="card-badge" role="switch" checked />
+                  <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="code-section">
+            <div class="code-header">
+              <span class="code-lang-badge">HTML + CSS</span>
+              <div class="code-actions">
+                <button class="btn-copy" data-target="cards-code" aria-label="Copy card code">📋 Copy</button>
+                <button class="btn-export" data-component="cards" aria-label="Export card code">💾 Export</button>
+                <button class="btn-ai-generate" data-component="cards" aria-label="Generate card code with AI">🤖 AI Generate</button>
+              </div>
+            </div>
+            <pre class="code-output" id="cards-code" aria-label="Generated card code"><code></code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════
+           SECTION: Modals
+      ════════════════════════════════ -->
+      <section id="modals" class="component-section" aria-labelledby="modals-heading">
+        <div class="section-header">
+          <h2 id="modals-heading"><span class="section-icon">🪟</span> Modals</h2>
+          <p class="section-desc">Build animated dialog and modal components with multiple display modes.</p>
+        </div>
+
+        <div class="section-body">
+          <div class="panel-row">
+            <div class="preview-panel" id="modals-preview" aria-label="Modal preview area">
+              <div class="preview-label">Live Preview</div>
+              <div class="preview-content" id="modals-preview-content">
+                <!-- Modal trigger area rendered by JS -->
+              </div>
+              <!-- Inline modal for preview -->
+              <div class="modal-preview-overlay" id="modal-preview-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-preview-title" aria-hidden="true">
+                <div class="modal-container" id="modal-preview-container">
+                  <div class="modal-header">
+                    <h3 class="modal-title" id="modal-preview-title">Modal Title</h3>
+                    <button class="modal-close" id="modal-close-btn" aria-label="Close modal">✕</button>
+                  </div>
+                  <div class="modal-body" id="modal-preview-body">
+                    <p>This is the modal body content. You can place any content here.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn-preview btn-preview-secondary" id="modal-cancel-btn">Cancel</button>
+                    <button class="btn-preview btn-preview-primary">Confirm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls-panel" aria-label="Modal controls">
+              <div class="controls-title">⚙️ Controls</div>
+
+              <div class="control-group">
+                <label for="modal-size">Size Variant</label>
+                <select id="modal-size" aria-label="Modal size">
+                  <option value="sm">Small</option>
+                  <option value="md" selected>Medium</option>
+                  <option value="lg">Large</option>
+                  <option value="drawer">Drawer</option>
+                  <option value="confirmation">Confirmation</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="modal-opacity">Overlay Opacity <span class="control-value" id="modal-opacity-val">0.6</span></label>
+                <input type="range" id="modal-opacity" min="30" max="90" value="60" aria-label="Overlay opacity" />
+              </div>
+
+              <div class="control-group">
+                <label for="modal-animation">Animation Style</label>
+                <select id="modal-animation" aria-label="Modal animation">
+                  <option value="scale">Scale</option>
+                  <option value="slide">Slide Up</option>
+                  <option value="flip">Flip</option>
+                </select>
+              </div>
+
+              <div class="control-group control-toggle-row">
+                <label for="modal-overlay-close">Close on Overlay Click</label>
+                <label class="toggle-switch" aria-label="Toggle overlay close">
+                  <input type="checkbox" id="modal-overlay-close" role="switch" checked />
+                  <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                </label>
+              </div>
+
+              <div class="control-group">
+                <button class="btn-preview btn-preview-primary" id="modal-open-btn" aria-label="Open modal preview">Open Modal Preview</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="code-section">
+            <div class="code-header">
+              <span class="code-lang-badge">HTML + CSS</span>
+              <div class="code-actions">
+                <button class="btn-copy" data-target="modals-code" aria-label="Copy modal code">📋 Copy</button>
+                <button class="btn-export" data-component="modals" aria-label="Export modal code">💾 Export</button>
+                <button class="btn-ai-generate" data-component="modals" aria-label="Generate modal code with AI">🤖 AI Generate</button>
+              </div>
+            </div>
+            <pre class="code-output" id="modals-code" aria-label="Generated modal code"><code></code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════
+           SECTION: Loaders
+      ════════════════════════════════ -->
+      <section id="loaders" class="component-section" aria-labelledby="loaders-heading">
+        <div class="section-header">
+          <h2 id="loaders-heading"><span class="section-icon">⏳</span> Loaders</h2>
+          <p class="section-desc">Pure CSS loading animations — spinners, skeletons, progress bars, and more.</p>
+        </div>
+
+        <div class="section-body">
+          <div class="panel-row">
+            <div class="preview-panel loaders-preview-panel" id="loaders-preview" aria-label="Loader preview area">
+              <div class="preview-label">Live Preview — All Variants</div>
+              <div class="preview-content loaders-grid" id="loaders-preview-content"></div>
+            </div>
+
+            <div class="controls-panel" aria-label="Loader controls">
+              <div class="controls-title">⚙️ Controls</div>
+
+              <div class="control-group">
+                <label for="loader-color">Color</label>
+                <input type="color" id="loader-color" value="#6366f1" aria-label="Loader color" />
+              </div>
+
+              <div class="control-group">
+                <label for="loader-size">Size <span class="control-value" id="loader-size-val">48px</span></label>
+                <input type="range" id="loader-size" min="24" max="120" value="48" aria-label="Loader size" />
+              </div>
+
+              <div class="control-group">
+                <label for="loader-speed">Speed <span class="control-value" id="loader-speed-val">1.0x</span></label>
+                <input type="range" id="loader-speed" min="5" max="30" value="10" aria-label="Loader speed" />
+              </div>
+            </div>
+          </div>
+
+          <div class="code-section">
+            <div class="code-header">
+              <span class="code-lang-badge">HTML + CSS</span>
+              <div class="code-actions">
+                <button class="btn-copy" data-target="loaders-code" aria-label="Copy loader code">📋 Copy</button>
+                <button class="btn-export" data-component="loaders" aria-label="Export loader code">💾 Export</button>
+                <button class="btn-ai-generate" data-component="loaders" aria-label="Generate loader code with AI">🤖 AI Generate</button>
+              </div>
+            </div>
+            <pre class="code-output" id="loaders-code" aria-label="Generated loader code"><code></code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════
+           SECTION: Shadows
+      ════════════════════════════════ -->
+      <section id="shadows" class="component-section" aria-labelledby="shadows-heading">
+        <div class="section-header">
+          <h2 id="shadows-heading"><span class="section-icon">🌑</span> Shadows</h2>
+          <p class="section-desc">Explore shadow depths from subtle to dramatic — including neon and colored variants.</p>
+        </div>
+
+        <div class="section-body">
+          <div class="panel-row">
+            <div class="preview-panel shadows-preview-panel" id="shadows-preview" aria-label="Shadow preview area">
+              <div class="preview-label">Live Preview — All Variants</div>
+              <div class="preview-content shadows-grid" id="shadows-preview-content"></div>
+            </div>
+
+            <div class="controls-panel" aria-label="Shadow controls">
+              <div class="controls-title">⚙️ Controls</div>
+
+              <div class="control-group">
+                <label for="shadow-color">Shadow Color</label>
+                <input type="color" id="shadow-color" value="#6366f1" aria-label="Shadow color" />
+              </div>
+
+              <div class="control-group">
+                <label for="shadow-blur">Blur Radius <span class="control-value" id="shadow-blur-val">20px</span></label>
+                <input type="range" id="shadow-blur" min="0" max="40" value="20" aria-label="Shadow blur" />
+              </div>
+
+              <div class="control-group">
+                <label for="shadow-spread">Spread <span class="control-value" id="shadow-spread-val">0px</span></label>
+                <input type="range" id="shadow-spread" min="-10" max="20" value="0" aria-label="Shadow spread" />
+              </div>
+
+              <div class="control-group">
+                <label for="shadow-offset-x">Offset X <span class="control-value" id="shadow-offset-x-val">0px</span></label>
+                <input type="range" id="shadow-offset-x" min="-20" max="20" value="0" aria-label="Shadow offset X" />
+              </div>
+
+              <div class="control-group">
+                <label for="shadow-offset-y">Offset Y <span class="control-value" id="shadow-offset-y-val">8px</span></label>
+                <input type="range" id="shadow-offset-y" min="-20" max="20" value="8" aria-label="Shadow offset Y" />
+              </div>
+            </div>
+          </div>
+
+          <div class="code-section">
+            <div class="code-header">
+              <span class="code-lang-badge">CSS</span>
+              <div class="code-actions">
+                <button class="btn-copy" data-target="shadows-code" aria-label="Copy shadow code">📋 Copy</button>
+                <button class="btn-export" data-component="shadows" aria-label="Export shadow code">💾 Export</button>
+                <button class="btn-ai-generate" data-component="shadows" aria-label="Generate shadow code with AI">🤖 AI Generate</button>
+              </div>
+            </div>
+            <pre class="code-output" id="shadows-code" aria-label="Generated shadow code"><code></code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════
+           SECTION: Gradients
+      ════════════════════════════════ -->
+      <section id="gradients" class="component-section" aria-labelledby="gradients-heading">
+        <div class="section-header">
+          <h2 id="gradients-heading"><span class="section-icon">🌊</span> Gradients</h2>
+          <p class="section-desc">10 curated gradient presets — linear, radial, and conic — with live customization.</p>
+        </div>
+
+        <div class="section-body">
+          <div class="panel-row">
+            <div class="preview-panel gradients-preview-panel" id="gradients-preview" aria-label="Gradient preview area">
+              <div class="preview-label">Live Preview — All Variants</div>
+              <div class="preview-content gradients-grid" id="gradients-preview-content"></div>
+            </div>
+
+            <div class="controls-panel" aria-label="Gradient controls">
+              <div class="controls-title">⚙️ Controls</div>
+
+              <div class="control-group">
+                <label for="gradient-type">Type</label>
+                <select id="gradient-type" aria-label="Gradient type">
+                  <option value="linear">Linear</option>
+                  <option value="radial">Radial</option>
+                  <option value="conic">Conic</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="gradient-angle">Angle <span class="control-value" id="gradient-angle-val">135°</span></label>
+                <input type="range" id="gradient-angle" min="0" max="360" value="135" aria-label="Gradient angle" />
+              </div>
+
+              <div class="control-group">
+                <label for="gradient-color1">Color Stop 1</label>
+                <input type="color" id="gradient-color1" value="#6366f1" aria-label="Gradient color 1" />
+              </div>
+
+              <div class="control-group">
+                <label for="gradient-color2">Color Stop 2</label>
+                <input type="color" id="gradient-color2" value="#ec4899" aria-label="Gradient color 2" />
+              </div>
+            </div>
+          </div>
+
+          <div class="code-section">
+            <div class="code-header">
+              <span class="code-lang-badge">CSS</span>
+              <div class="code-actions">
+                <button class="btn-copy" data-target="gradients-code" aria-label="Copy gradient code">📋 Copy</button>
+                <button class="btn-export" data-component="gradients" aria-label="Export gradient code">💾 Export</button>
+                <button class="btn-ai-generate" data-component="gradients" aria-label="Generate gradient code with AI">🤖 AI Generate</button>
+              </div>
+            </div>
+            <pre class="code-output" id="gradients-code" aria-label="Generated gradient code"><code></code></pre>
+          </div>
+        </div>
+      </section>
+
+    </main><!-- /main-content -->
+  </div><!-- /app-layout -->
+
+  <!-- ── AI Panel ── -->
+  <div class="ai-panel" id="ai-panel" role="complementary" aria-label="AI Code Generator">
+    <div class="ai-panel-toggle" id="ai-panel-toggle" aria-expanded="false" aria-controls="ai-panel-body">
+      <span class="ai-panel-icon">🤖</span>
+      <span class="ai-panel-title">Kimi K2.6 AI Assistant</span>
+      <span class="ai-panel-chevron" id="ai-chevron">▲</span>
+    </div>
+    <div class="ai-panel-body" id="ai-panel-body" aria-hidden="true">
+      <div class="ai-credentials">
+        <div class="ai-cred-group">
+          <label for="cf-api-key">🔑 Cloudflare API Key</label>
+          <input type="password" id="cf-api-key" placeholder="Bearer token from CF dashboard" autocomplete="off" aria-label="Cloudflare API key" />
+        </div>
+        <div class="ai-cred-group">
+          <label for="cf-account-id">🏢 Account ID</label>
+          <input type="text" id="cf-account-id" placeholder="Your Cloudflare Account ID" autocomplete="off" aria-label="Cloudflare Account ID" />
+        </div>
+      </div>
+      <div class="ai-prompt-area">
+        <textarea id="ai-prompt" placeholder="Describe the UI component you want to generate... e.g. 'Create a glassmorphic pricing card with a highlighted popular plan'" aria-label="AI prompt input" rows="3"></textarea>
+        <button class="btn-ai-send" id="ai-send-btn" aria-label="Send prompt to Kimi K2.6">
+          <span class="btn-icon-emoji">✨</span> Send to Kimi K2.6
+        </button>
+      </div>
+      <div class="ai-response-area" id="ai-response-area" aria-live="polite">
+        <div class="ai-response-label">AI Response</div>
+        <div class="ai-response" id="ai-response">
+          <span class="ai-placeholder">Your AI-generated code will appear here...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
