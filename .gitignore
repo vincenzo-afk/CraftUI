@@ -1,0 +1,7 @@
+# Environment variables - NEVER commit this file
+.env
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
